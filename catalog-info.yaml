@@ -1,0 +1,54 @@
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+# Warning: It is not recommended to make direct edits to this file.
+# Please use the "Edit" button located within DR Backstage to make any modifications.
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: jrjr-testing-docs # Name is used as identifier, use title for setting a display name
+  title: JRJR Testing Docs
+  description: Testing docs app
+  links:
+    - url: https://api.dr.dk/wo-cache/docs/api-guide.html
+      title: API guide for wo-cache
+  annotations:
+    backstage.io/techdocs-ref: dir:new-location/jrjr-testing-docs
+  tags:
+    - foo
+spec:
+  type: Backend Service
+  lifecycle: Experimental
+  owner: INHERIT_FROM_SYSTEM
+  system: system:default/jrjr-test-system
+  consumesApis:
+    []
+  providesApis:
+    []
+  dependsOn:
+    []
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+# Warning: It is not recommended to make direct edits to this file.
+# Please use the "Edit" button located within DR Backstage to make any modifications.
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: jrjr-test-docs-again # Name is used as identifier, use title for setting a display name
+  title: JRJR Test Docs Again
+  description: Testing docs app again
+  links:
+    []
+  annotations:
+    backstage.io/techdocs-ref: dir:docs/jrjr-test-docs-again
+  tags:
+    []
+spec:
+  type: Mobile App
+  lifecycle: Experimental
+  owner: INHERIT_FROM_SYSTEM
+  system: system:default/jrjr-test-system
+  consumesApis:
+    []
+  providesApis:
+    []
+  dependsOn:
+    []

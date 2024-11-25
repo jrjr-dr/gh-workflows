@@ -1,0 +1,41 @@
+# .github/workflows/process-yaml.yml
+name: Process YAML Documents
+on:
+  workflow_dispatch:
+    inputs:
+      yaml_path:
+        description: 'Path to the YAML file to process'
+        required: true
+        type: string
+      search_key:
+        description: 'Key to search for in each YAML document'
+        required: true
+        type: string
+
+jobs:
+  process-yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: |
+          cd .github/scripts
+          npm init -y
+          npm install js-yaml
+          
+      - name: Process YAML
+        id: yaml-processor
+        run: |
+          node .github/scripts/process_yaml.js \
+            "${{ github.event.inputs.yaml_path }}" \
+            "${{ github.event.inputs.search_key }}"
+
+      - name: Output results
+        run: |
+          echo "${{ steps.yaml-processor.outputs.results }}"
