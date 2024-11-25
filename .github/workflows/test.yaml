@@ -1,0 +1,19 @@
+name: Test Workflow
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run a test command
+        run: |
+          echo "Hello from GitHub Actions!"
+          echo "Running on: $RUNNER_OS"
+          
+  another-job:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Another step
+        run: echo "This is another job"
